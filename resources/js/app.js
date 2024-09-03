@@ -3,7 +3,7 @@ import 'flowbite';
 
 const registerButton = document.getElementById('register-button');
 
-registerButton.addEventListener('click', ()=>{
+registerButton?.addEventListener('click', ()=>{
     const register = document.getElementById('register');
     const login = document.getElementById('login');
     login.classList.add('hidden');
@@ -14,7 +14,7 @@ registerButton.addEventListener('click', ()=>{
 
 const loginButton = document.getElementById('login-button');
 
-loginButton.addEventListener('click', ()=>{
+loginButton?.addEventListener('click', ()=>{
     const register = document.getElementById('register');
     const login = document.getElementById('login');
     register.classList.add('hidden');
