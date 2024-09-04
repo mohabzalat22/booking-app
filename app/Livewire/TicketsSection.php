@@ -4,15 +4,15 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-
+use Carbon\Carbon;
 use App\Models\Ticket;
 
 class TicketsSection extends Component
 {
     use WithPagination;
 
-    public $start_date = '';
-    public $end_date = '';
+    public $start_date = "";
+    public $end_date = "";
     public $price = 0;
 
     public $categories = [];
@@ -30,6 +30,8 @@ class TicketsSection extends Component
         'delete_filter' => 'delete_filter',
         'refresh' => '$refresh',
         'add_price' => 'add_price',
+        'add_start_date' => 'add_start_date',
+        'add_end_date' => 'add_end_date',
     ];
 
     public function add($e , $cat){
@@ -90,11 +92,19 @@ class TicketsSection extends Component
         $this->price = $e;
     }
 
+    public function add_start_date($start){
+        $this->start_date = $start;
+    }
+
+    public function add_end_date($end){
+        $this->end_date = $end;
+    }
+
     public function render()
     {
         $records = [];
-        if($this->filters == []){
-            $records = Ticket::paginate(1);
+        if($this->filters == [] && $this->price == 0 && $this->start_date == "" && $this->end_date == ""){
+            $records = Ticket::paginate(2);
         }
         else{
             // $category_filter_query = Ticket::whereIn('category', $this->categories);
@@ -104,6 +114,11 @@ class TicketsSection extends Component
             // $price_filter_query = Ticket::where('price' ,'<' , $this->price);
 
             $records = Ticket::query()
+            ->when($this->start_date && $this->end_date , function($query){
+                $parsed_start_date = Carbon::parse($this->start_date)->format('Y-m-d');
+                $parsed_end_date = Carbon::parse($this->end_date)->format('Y-m-d');
+                return $query->whereBetween('date_time', [$parsed_start_date, $parsed_end_date]);
+            }) 
             ->when(
                 $this->categories , function($query){
                     return $query->whereIn('category', $this->categories);
