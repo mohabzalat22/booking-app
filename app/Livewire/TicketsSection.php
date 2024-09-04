@@ -3,10 +3,14 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
+
 use App\Models\Ticket;
 
 class TicketsSection extends Component
 {
+    use WithPagination;
+
     public $start_date = '';
     public $end_date = '';
     public $price = 0;
@@ -17,8 +21,6 @@ class TicketsSection extends Component
     public $places = [];
     public $filters = [];
 
-    public $records = [];
-
     protected $listeners = [
         'add' => 'add',
         'add_category' => 'add_category',
@@ -27,6 +29,7 @@ class TicketsSection extends Component
         'add_place' => 'add_place',
         'delete_filter' => 'delete_filter',
         'refresh' => '$refresh',
+        'add_price' => 'add_price',
     ];
 
     public function add($e , $cat){
@@ -83,22 +86,50 @@ class TicketsSection extends Component
         }
     }
 
+    public function add_price($e){
+        $this->price = $e;
+    }
+
     public function render()
     {
+        $records = [];
         if($this->filters == []){
-            $this->records = Ticket::all();
+            $records = Ticket::paginate(1);
         }
         else{
-            $this->records = Ticket::whereIn('category', $this->categories)
-                ->whereIn('country', $this->countries)
-                ->whereIn('city', $this->cities)
-                ->whereIn('place', $this->places)
-                ->get();
+            // $category_filter_query = Ticket::whereIn('category', $this->categories);
+            // $country_filter_query = Ticket::whereIn('country', $this->countries);
+            // $city_filter_query = Ticket::whereIn('city', $this->cities);
+            // $place_filter_query = Ticket::whereIn('place', $this->places);
+            // $price_filter_query = Ticket::where('price' ,'<' , $this->price);
+
+            $records = Ticket::query()
+            ->when(
+                $this->categories , function($query){
+                    return $query->whereIn('category', $this->categories);
+            })
+            ->when(
+                $this->countries , function($query){
+                    return $query->whereIn('country', $this->countries);
+            })
+            ->when(
+                $this->cities , function($query){
+                    return $query->whereIn('city', $this->cities);
+            })
+            ->when(
+                $this->places , function($query){
+                    return $query->whereIn('place', $this->places);
+            })
+            ->when(
+                $this->price , function($query){
+                    return $query->where('price' ,'<' , $this->price);
+            })
+            ->paginate(1);
         }
 
         return view('livewire.tickets-section',[
             'filters' => $this->filters,
-            'tickets' => $this->records
+            'tickets' => $records
             ]
         );
     }
