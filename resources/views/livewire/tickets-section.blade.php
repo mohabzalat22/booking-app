@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-between ms-auto">
-                    <p class="font-bold text-dark-800 m-2 p-0 text-2xl">{{$ticket->price - ($ticket->price * $ticket->tax)}}$</p>
+                    <p class="font-bold text-dark-800 m-2 p-0 text-2xl">{{$ticket->price - ($ticket->price * $ticket->discount)}}$</p>
                 </div>
                 </div>
             </a>

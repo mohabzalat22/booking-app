@@ -27,7 +27,7 @@ class TicketFactory extends Factory
             'location' => fake()->address(),
             'price' => fake()->randomDigit(0 , 1000),
             'image' => fake()->randomElement(['http://127.0.0.1:8000/images/1.jpg', 'http://127.0.0.1:8000/images/2.png']),
-            'discount' => fake()->numberBetween(0,100),
+            'discount' => fake()->randomDigit()/10,
             'tax' => fake()->numberBetween(0,100),
             'reserved_bool' => fake()->boolean(),
         ];
