@@ -27,10 +27,5 @@ Route::get('/', function () {
 Route::get('/tickets', function () {
     return view('tickets',[
         'tickets' => Ticket::paginate(2),
-        'countries' => Ticket::pluck('country')->unique(),
-        'cities' => Ticket::pluck('city')->unique(),
-        'places' => Ticket::pluck('place')->unique(),
-        'categories' => Ticket::pluck('category')->unique(),
-        
     ]);
 })->name('tickets');
