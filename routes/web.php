@@ -19,13 +19,11 @@ require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome',[
-        'tickets' => Ticket::orderBy('created_at','desc')->paginate(2)
+        'tickets' => Ticket::orderBy('created_at','desc')->paginate(10)
     ]);
 })->name('home');
 
 
 Route::get('/tickets', function () {
-    return view('tickets',[
-        'tickets' => Ticket::paginate(2),
-    ]);
+    return view('tickets');
 })->name('tickets');
