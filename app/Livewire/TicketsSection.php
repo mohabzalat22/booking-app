@@ -104,7 +104,7 @@ class TicketsSection extends Component
     {
         $records = [];
         if($this->filters == [] && $this->price == 0 && $this->start_date == "" && $this->end_date == ""){
-            $records = Ticket::paginate(2);
+            $records = Ticket::paginate(10);
         }
         else{
             // $category_filter_query = Ticket::whereIn('category', $this->categories);
@@ -139,7 +139,7 @@ class TicketsSection extends Component
                 $this->price , function($query){
                     return $query->where('price' ,'<' , $this->price);
             })
-            ->paginate(1);
+            ->paginate(10);
         }
 
         return view('livewire.tickets-section',[
