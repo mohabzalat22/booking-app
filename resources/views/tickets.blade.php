@@ -6,6 +6,7 @@
 
         <title>Laravel</title>
         @livewireStyles
+        @livewireScripts
         @vite(['resources/css/app.css','resources/js/app.js'])
     </head>
     <body class="font-sans bg-gray-100 antialiased max-w-[1500px] mx-auto">
@@ -20,6 +21,5 @@
          </div>
         <!-- footer -->
         @include('layouts.footer')
-        @livewireScripts
     </body>
 </html>
