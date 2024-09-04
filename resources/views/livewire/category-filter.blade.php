@@ -4,7 +4,7 @@
         </svg>
     </button>
     <div id="category" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+        <ul class="py-2 text-sm text-gray-700 overflow-y-scroll h-60 scrollbar-hide" aria-labelledby="dropdownDefaultButton">
             @foreach ($categories as $category)
                 <li wire:click="update('{{$category}}')">
                     <a class="block px-4 py-2 hover:bg-gray-100">{{$category}}</a>
