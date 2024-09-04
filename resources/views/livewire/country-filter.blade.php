@@ -3,7 +3,7 @@
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
         </svg>
     </button>
-    <div id="country" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+    <div id="country" class="z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
         <ul class="py-2 text-sm text-gray-700 overflow-y-scroll h-60 scrollbar-hide" aria-labelledby="dropdownDefaultButton">
             @foreach ($countries as $country)
                 <li wire:click="update('{{$country}}')">

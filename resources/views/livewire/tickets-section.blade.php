@@ -6,7 +6,7 @@
         @endforeach
     </div>
     {{-- filters --}}
-    <div class="flex flex-wrap items-center sticky top-20 bg-gray-100">
+    <div class="flex flex-wrap items-center sticky top-20 bg-gray-100 z-30">
     {{-- date time --}}
     <livewire:datetime-filter >
     {{-- country --}}
@@ -21,11 +21,11 @@
     <livewire:price-filter >
     </div>
     <!-- cards-section -->
-    <div class="p-6 flex flex-col">
+    <div class="p-6 flex flex-col z-10">
         @foreach ($tickets as $ticket)   
         <!-- card -->
             <a  class="mx-auto hover:scale-110 ease-in-out flex items-center w-full duration-100 m-2 bg-white border border-gray-200 rounded-lg shadow">
-            <div> <img class="hidden lg:block rounded-t-lg max-w-sm" src="{{$ticket->image}}" alt="" /></div>
+                <div> <img class="hidden lg:block rounded-t-lg max-w-sm" src="{{$ticket->image}}" alt="" /></div>
                 <div class="flex flex-wrap justify-between w-full">
                 <div class="p-5">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{$ticket->title}}</h5>
