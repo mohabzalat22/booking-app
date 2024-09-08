@@ -72,7 +72,7 @@
             <div class="p-6 flex flex-wrap">
                 @foreach ($tickets as $ticket)     
                 <!-- card -->
-                 <a  class="hover:scale-110 ease-in-out duration-100 max-w-sm m-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                 <a href="{{route('ticket.index',['id'=> $ticket->id])}}"  class="hover:scale-110 ease-in-out duration-100 max-w-sm m-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                      <img class="rounded-t-lg" src="{{$ticket->image}}" alt="" />
                      <div class="p-5">
                          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$ticket->title}}</h5>
