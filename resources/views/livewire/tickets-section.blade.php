@@ -24,7 +24,7 @@
     <div class="p-6 flex flex-col z-10">
         @foreach ($tickets as $ticket)   
         <!-- card -->
-            <a  class="mx-auto hover:scale-110 ease-in-out flex items-center w-full duration-100 m-2 bg-white border border-gray-200 rounded-lg shadow">
+            <a href="{{route('ticket.index',['id'=>$ticket->id])}}" class="mx-auto hover:scale-110 ease-in-out flex items-center w-full duration-100 m-2 bg-white border border-gray-200 rounded-lg shadow">
                 <div> <img class="hidden lg:block rounded-t-lg max-w-sm" src="{{$ticket->image}}" alt="" /></div>
                 <div class="flex flex-wrap justify-between w-full">
                 <div class="p-5">
