@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Ticket;
+use App\Models\Venue;
 
 class CountryFilter extends Component
 {
@@ -15,7 +15,7 @@ class CountryFilter extends Component
     public function render()
     {
         return view('livewire.country-filter', [
-            'countries' => Ticket::pluck('country')->unique()
+            'countries' => Venue::pluck('country')->unique()
         ]);
     }
 }
