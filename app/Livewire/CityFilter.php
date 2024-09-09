@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Ticket;
+use App\Models\Venue;
 
 class CityFilter extends Component
 {
@@ -15,7 +15,7 @@ class CityFilter extends Component
     public function render()
     {
         return view('livewire.city-filter', [
-            'cities' => Ticket::pluck('city')->unique()
+            'cities' => Venue::pluck('city')->unique()
         ]);
     }
 }
