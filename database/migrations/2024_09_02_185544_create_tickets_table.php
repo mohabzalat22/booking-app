@@ -17,15 +17,7 @@ return new class extends Migration
             $table->longText('description');
             $table->string('category');
             $table->dateTime('date_time');
-            $table->string('country');
-            $table->string('city');
-            $table->string('place');
-            $table->string('location'); //lang - lat
-            $table->float('price');
             $table->string('image');
-            $table->float('discount')->default(0);
-            $table->float('tax')->default(0);
-            $table->boolean('reserved_bool')->default(false);
             $table->timestamps();
         });
     }
