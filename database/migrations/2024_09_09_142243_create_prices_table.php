@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('type_id');
-            $table->foreign('type_id')->refrences('id')->on('types')->onDelete('cascade');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
             $table->float('price');
             $table->float('discount')->default(0);
             $table->float('tax')->default(0);
