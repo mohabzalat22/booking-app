@@ -34,6 +34,10 @@ class TicketsSection extends Component
         'add_end_date' => 'add_end_date',
     ];
 
+    public function clear_filters(){
+        $this->filters = [];
+    }
+
     public function add($e , $cat){
         if(!in_array($e, $this->filters)){
             $this->filters += [$e => $cat]; //add associative array
@@ -125,20 +129,23 @@ class TicketsSection extends Component
             })
             ->when(
                 $this->countries , function($query){
-                    return $query->whereIn('country', $this->countries);
+                    $query->whereHas('venue', function ($inquery) {
+                        return $inquery->whereIn('country', $this->countries);
+                    });
             })
             ->when(
                 $this->cities , function($query){
-                    return $query->whereIn('city', $this->cities);
+                    $query->whereHas('venue', function ($inquery) {
+                        return $inquery->whereIn('city', $this->cities);
+                    });
             })
             ->when(
                 $this->places , function($query){
-                    return $query->whereIn('place', $this->places);
+                    $query->whereHas('venue', function ($inquery) {
+                        return $inquery->whereIn('place', $this->places);
+                    });
             })
-            ->when(
-                $this->price , function($query){
-                    return $query->where('price' ,'<' , $this->price);
-            })
+            ->with(['venue','types'])
             ->paginate(10);
         }
 
