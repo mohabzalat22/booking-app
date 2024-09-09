@@ -29,7 +29,6 @@ class TicketsSection extends Component
         'add_place' => 'add_place',
         'delete_filter' => 'delete_filter',
         'refresh' => '$refresh',
-        'add_price' => 'add_price',
         'add_start_date' => 'add_start_date',
         'add_end_date' => 'add_end_date',
     ];
@@ -90,10 +89,6 @@ class TicketsSection extends Component
         if(!in_array($e, $this->places)){
             array_push($this->places , $e);
         }
-    }
-
-    public function add_price($e){
-        $this->price = $e;
     }
 
     public function add_start_date($start){
