@@ -21,15 +21,7 @@ class TicketFactory extends Factory
             'description' => fake()->paragraph(),
             'category' => fake()->word(),
             'date_time' => fake()->date(),
-            'country' => fake()->state(),
-            'city' => fake()->city(),
-            'place' => fake()->word(),
-            'location' => fake()->address(),
-            'price' => fake()->randomDigit(0 , 1000),
             'image' => fake()->randomElement(['http://127.0.0.1:8000/images/1.jpg', 'http://127.0.0.1:8000/images/2.png']),
-            'discount' => fake()->randomDigit()/10,
-            'tax' => fake()->numberBetween(0,100),
-            'reserved_bool' => fake()->boolean(),
         ];
     }
 }
