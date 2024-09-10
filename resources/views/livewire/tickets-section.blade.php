@@ -1,24 +1,32 @@
 <div>
     {{-- filtered --}}
+    <div class="flex justify-between">
+        <p class="text-3xl font-semibold text-gray-800">
+            Tickets
+        </p>
+        <button wire:click="clear_filters" type="button"  class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Clear</button>
+    </div>
     <div class="flex flex-wrap p-4">
         @foreach (array_keys($filters) as $filter_key)
-            <p wire:click="delete_filter('{{$filter_key}}')" class="text-sm mx-1 text-gray-600 font-semibold px-4 py-2 rounded-full border bg-gray-200">{{$filter_key}}</p>
+            <p wire:click="delete_filter('{{$filter_key}}')" class="my-1 text-sm mx-1 text-gray-600 font-semibold px-4 py-2 rounded-full border bg-gray-200">{{$filter_key}}</p>
         @endforeach
     </div>
     {{-- filters --}}
-    <div class="flex flex-wrap items-center sticky top-20 bg-gray-100 z-30">
+    <div class="flex flex-wrap items-center justify-between sticky top-20 bg-gray-100 z-30">
     {{-- date time --}}
-    <livewire:datetime-filter >
-    {{-- country --}}
-    <livewire:country-filter >
-    {{-- city --}}
-    <livewire:city-filter >
-    {{-- place --}}
-    <livewire:place-filter >
-    {{-- category --}}
-    <livewire:category-filter >
-    {{-- price --}}    
-    <livewire:price-filter >
+    <div class="mx-auto lg:mx-0">
+        <livewire:datetime-filter >
+    </div>
+    <div class="flex mx-auto lg:mx-0 flex-wrap justify-center">
+        {{-- country --}}
+        <livewire:country-filter >
+        {{-- city --}}
+        <livewire:city-filter >
+        {{-- place --}}
+        <livewire:place-filter >
+        {{-- category --}}
+        <livewire:category-filter >
+    </div>
     </div>
     <!-- cards-section -->
     <div class="p-6 flex flex-col z-10">
@@ -40,11 +48,11 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"/>
                         </svg>                                                          
-                        <p class="ms-4 text-sm text-gray-500 font-bold capitalize">{{$ticket->city}} {{$ticket->place}} {{$ticket->country}}</p>
+                        <p class="ms-4 text-sm text-gray-500 font-bold capitalize">{{$ticket->venue->city}} {{$ticket->venue->place}} {{$ticket->venue->country}}</p>
                     </div>
                 </div>
                 <div class="flex items-center justify-between ms-auto">
-                    <p class="font-bold text-dark-800 m-2 p-0 text-2xl">{{$ticket->price - ($ticket->price * $ticket->discount)}}$</p>
+                    {{-- <p class="font-bold text-dark-800 m-2 p-0 text-2xl">{{$ticket->price - ($ticket->price * $ticket->discount)}}$</p> --}}
                 </div>
                 </div>
             </a>
