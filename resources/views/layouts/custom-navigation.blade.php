@@ -65,11 +65,11 @@
         </div>
     </div>
     <!-- nav -->
-    <nav class="bg-white border-gray-200 sticky top-0 z-50">
+    <nav class="bg-white border-gray-200 sticky top-0 z-40">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse -mt-2">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap">Booking</span>
+            <a href="{{route('home')}}" class="flex items-center space-x-3 rtl:space-x-reverse -mt-2">
+                <img src="http://127.0.0.1:8000/images/ticket.png" class="h-12 w-12" alt="Flowbite Logo" />
+                <span class="self-center text-3xl font-semibold whitespace-nowrap">TikBook</span>
             </a>
             <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
@@ -83,7 +83,7 @@
                 <a href="{{route('home')}}" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
                 </li>
                 <li class="my-auto">
-                    <a href="{{route('tickets')}}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Booking Management</a>
+                    <a href="{{route('tickets')}}" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Tickets</a>
                 </li>
                 <li class="my-auto">
                     <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 md:dark:hover:bg-transparent">Payment</a>
