@@ -12,6 +12,19 @@ class OrderComponent extends Component
     public $selected_type = '';
     public $id;
     public $price = 0;
+    public $type_danger;
+
+    public function show_cart(){ //modal
+        if($this->id != null && $this->selected_type != null)$this->dispatch('add_data_to_cart', $this->id ,$this->selected_type, $this->tickets);
+        if( $this->selected_type == '')
+        {
+            $this->type_danger = true;
+            $this->dispatch('toast_danger','Please select type first');
+        }
+        else{
+            $this->type_danger = false;
+        }
+    }
 
     public function change_type($e){
         $this->selected_type = $e;
