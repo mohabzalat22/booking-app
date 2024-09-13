@@ -17,12 +17,14 @@ class CartComponent extends Component
     public $price;
     public $success_message;
     public $danger_message;
+    public $end_time;
 
     public function get_data_local_storage($data){
         $cart_ticket = json_decode($data, true);
         $this->id = $cart_ticket["id"];
         $this->type = $cart_ticket["type"];
         $this->number = $cart_ticket["number"];
+        $this->end_time = $cart_ticket["date_time"];
         // ticket
         if(Ticket::with('types.price')->find($this->id)->types()->where('type', $this->type)->first()){
             $this->price = Ticket::with('types.price')->find($this->id)->types()->where('type', $this->type)->first()->price->price;
