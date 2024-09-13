@@ -4,9 +4,9 @@
         <div class="px-3 py-2 bg-slate-200 text-center font-bold rounded-full">{{$selected_type}}</div>
     @endif
     <p class="text-gray-800 font-bold my-4">Type</p>
-    <ul>
+    <ul x-data="{ error: @entangle('type_danger') }"  :class="{'border border-red-500': error}" class="rounded-md p-1">
         @foreach ($types as $type)
-            <li wire:click="change_type('{{$type}}')" >
+            <li wire:click="change_type('{{$type}}')">
                 <button type="button" class="text-blue-700 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                     {{$type}}
                 </button>
@@ -29,5 +29,5 @@
         @endphp
         <p class="text-gray-800 font-bold my-2 text-2xl">{{$tickets * $price}}$</p>
     </div>
-    <button class="bg-blue-700 w-full text-white p-4 hover:bg-blue-800">BUY</button>
+    <button class="bg-blue-700 w-full text-white p-4 hover:bg-blue-800" wire:click="show_cart">BUY</button>
 </div>
