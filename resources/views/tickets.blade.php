@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
+        <link rel="icon" type="image/x-icon" href="http://127.0.0.1:8000/images/ticket.png">
+        <title>TikBook</title>
         @livewireStyles
         @livewireScripts
         @vite(['resources/css/app.css','resources/js/app.js'])
@@ -12,10 +12,7 @@
     <body class="font-sans bg-gray-100 antialiased max-w-[1500px] mx-auto">
         @include('layouts.custom-navigation')
         <!-- tickets -->
-         <div class="mt-12 p-10">
-            <p class="text-3xl font-semibold text-gray-800">
-                Tickets
-            </p>
+         <div class="mt-10 lg:mt-12 p-2 lg:p-10">
             {{-- tickets-section --}}
             @livewire('tickets-section')
          </div>
