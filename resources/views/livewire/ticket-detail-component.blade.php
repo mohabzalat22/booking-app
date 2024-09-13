@@ -11,7 +11,7 @@
     @endif
     {{-- modal --}}
     @if ($show_modal)
-        <div wire:click="hide_modal" id="add-cart-modal" tabindex="-1" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex"  aria-modal="true" role="dialog">
+        <div wire:click="hide_modal" id="add-cart-modal" tabindex="-1" class="transition ease-in-out delay-500 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full flex"  aria-modal="true" role="dialog">
             <div @click.stop class="relative p-4 w-full max-w-md max-h-full">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <button wire:click="hide_modal" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" wire:click="hide_modal">
@@ -113,16 +113,19 @@
 <script>
     // var tickets = [];
     const save_to_local_storage = (id, type, number)=>{
-        console.log(id, type, number)
         if(id != null && type != null && number != null){
+            const date_time = new Date();
+            date_time.setTime(date_time.getTime() + 10 * 60 * 1000);
+            console.log(date_time)
             const data_record = {
                 'id': id,
                 'type': type, 
                 'number': number, 
+                'date_time': date_time.toISOString().toLocaleString()
             }
             try{
                 // tickets.push(data_record);
-                localStorage.setItem('tickets', JSON.stringify(data_record));
+                localStorage.setItem('ticket', JSON.stringify(data_record));
             }
             catch ($e){
                 console.error($e);
