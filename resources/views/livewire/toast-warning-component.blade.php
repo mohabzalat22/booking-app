@@ -5,5 +5,5 @@
         </svg>
         <span class="sr-only">Warning icon</span>
     </div>
-    <div class="ms-3 text-sm font-normal">"{{$message}}"</div>
+    <div class="ms-3 text-sm font-normal">{{$message}}</div>
 </div>
