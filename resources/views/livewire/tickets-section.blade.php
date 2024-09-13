@@ -4,7 +4,7 @@
         <p class="text-3xl font-semibold text-gray-800">
             Tickets
         </p>
-        <button wire:click="clear_filters" type="button"  class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Clear</button>
+        <button wire:click="clear_filters"  type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Clear</button>
     </div>
     <div class="flex flex-wrap p-4">
         @foreach (array_keys($filters) as $filter_key)
@@ -12,7 +12,7 @@
         @endforeach
     </div>
     {{-- filters --}}
-    <div class="flex flex-wrap items-center justify-between sticky top-20 bg-gray-100 z-30">
+    <div class="flex flex-wrap items-center justify-between sticky top-[70px] bg-gray-100 z-30">
     {{-- date time --}}
     <div class="mx-auto lg:mx-0">
         <livewire:datetime-filter >
