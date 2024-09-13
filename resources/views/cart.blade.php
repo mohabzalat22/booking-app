@@ -7,11 +7,10 @@
         <title>TikBook</title>
         @vite(['resources/css/app.css','resources/js/app.js'])
         @livewireStyles
-        @livewireScripts
     </head>
     <body class="font-sans bg-gray-100 antialiased dark:bg-black dark:text-white/50 max-w-[1500px] mx-auto">
         @include('layouts.custom-navigation')
-        <livewire:cart-component>
+        <livewire:cart-component />
         <!-- footer -->
         @include('layouts.footer')
     </body>
