@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Factories;
+use App\Models\Vendor;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,6 +18,7 @@ class TicketFactory extends Factory
     public function definition(): array
     {
         return [
+            'vendor_id' => Vendor::factory(),
             'title' => fake()->words(2, true),
             'description' => fake()->paragraph(),
             'category' => fake()->word(),
