@@ -67,5 +67,5 @@ The Tickets Booking System is built using the **PHP Laravel framework** with **L
 
 1. **Clone the repository**:
    ```bash
-   git clone [https://github.com/mohabzalat22/booking-app.git]
+   git clone https://github.com/mohabzalat22/booking-app.git
    cd ticket-booking-system
