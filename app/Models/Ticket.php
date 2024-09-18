@@ -36,4 +36,9 @@ class Ticket extends Model
         return $this->hasMany(Type::class);
     }
 
+    public function vendor(): BelongsTo
+    {
+        return $this->belongsTo(Vendor::class);
+    }
+
 }
