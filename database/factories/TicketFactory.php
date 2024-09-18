@@ -23,7 +23,7 @@ class TicketFactory extends Factory
             'description' => fake()->paragraph(),
             'category' => fake()->word(),
             'date_time' => fake()->date(),
-            'image' => fake()->randomElement(['http://127.0.0.1:8000/images/1.jpg', 'http://127.0.0.1:8000/images/2.png']),
+            'image' => fake()->randomElement(['http://127.0.0.1:8000/images/1.jpg', 'http://127.0.0.1:8000/images/2.jpg', 'http://127.0.0.1:8000/images/3.jpg', 'http://127.0.0.1:8000/images/4.jpg']),
         ];
     }
 }
