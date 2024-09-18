@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Jobs\ReserveTicketJob;
+use App\Models\USer;
 use Livewire\Component;
 use App\Models\Ticket;
-use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
-
+use Carbon\Carbon;
+use App\Services\Paymob;
 
 
 class CartComponent extends Component
@@ -56,21 +58,48 @@ class CartComponent extends Component
             return;
         }
         // payment then reserve
-        $record = Reservation::create([
-            'user_id' => auth()->user()->id,
+        $ticketData = [
+            'user_id' => Auth::user()->id,
             'ticket_id' => $this->id,
             'type' => $this->type,
             'number' => $this->number,
             'serial' => substr(hash('sha256', uniqid(rand(), true)), 0, 16),
-        ]);
-        if($record->exists()){
-            $this->danger_message = null;
-            $this->success_message = 'Successfully Added to Reservation.';
-
-        } else{
-            $this->success_message = null;
-            $this->danger_message = 'Error occured during Adding to Reservation';
-        }
+        ]; 
+        // payment
+        $reservation_price = Ticket::with(['types.quantity'])->find($this->id)->types()->where('type', $this->type)->with('price')->first()->price->price;
+        $reservation_price *=100; //because payment is in cents
+        $expiration = 600;
+        $currency = "EGP";
+        $items = [];
+        // 
+        $billing_data = [
+            "apartment"=> "803",
+            "email"=> "user@example.com",
+            "floor"=> "42",
+            "first_name"=> "John",
+            "street"=> "123 St",
+            "building"=> "123",
+            "phone_number"=> "+20123456789",
+            "shipping_method"=> "PKG",
+            "postal_code"=> "01898",
+            "city"=> "Cairo",
+            "country"=> "EG",
+            "last_name"=> "Doe",
+            "state"=> "Cairo"
+        ];        
+        // payment
+        $p = new Paymob(
+            env("PAYMOB_API_KEY"),
+            env("INTEGRATION_ID"),
+            $expiration,
+        );
+        $p->get_auth_token();
+        $p->order([env("INTEGRATION_ID")], (int)$reservation_price, $currency, $items);
+        $p->get_payment_token($billing_data, (int)$reservation_price, $currency);
+        $auth_user_id = Auth::user()->id;
+        ReserveTicketJob::dispatch(User::find($auth_user_id), $ticketData, $p);
+        
+        return redirect()->route('notifications');
     }
 
     public function render()
