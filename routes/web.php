@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\TicketController;
-
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Route;
 use App\Models\Ticket;
 
@@ -21,7 +23,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/', function () {
     return view('welcome',[
-        'tickets' => Ticket::orderBy('created_at','desc')->paginate(10)
+        'tickets' => Ticket::orderBy('created_at','desc')->with(['venue','types'])->paginate(9)
     ]);
 })->name('home');
 
@@ -31,3 +33,12 @@ Route::get('/tickets', function () {
 })->name('tickets');
 
 Route::get('/ticket/{id}', [TicketController::class, 'index'])->name('ticket.index');
+
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');
+
+Route::middleware('auth')->group(function(){
+    Route::get('/reservations',[ReservationController::class, 'index'])->name('reservations');
+    Route::get('/notifications',[NotificationController::class, 'index'])->name('notifications');
+});
