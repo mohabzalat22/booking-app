@@ -7,8 +7,8 @@
                 <form class="max-w-sm mx-auto p-8" action="{{route('login')}}" method="POST">
                     @auth
                     <div class="flex justify-between items-center bg-gray-800 text-white px-4 rounded-full">
-                        <p class="my-1">Welcome, {{ Auth::user()->name }}!</p>
-                        <a href="{{route('dashboard')}}" class="text-red-500 p-2 rounded-full text-xl my-4 bg-white">dashboard</a>    
+                        <p class="my-1">Welcome, <span class="text-xl">{{ Auth::user()->name }}</span></p>
+                        <a href="{{route('dashboard')}}" class="text-white p-2 rounded-full text-xl my-4 bg-gray-700">dashboard</a>    
                     </div>
                     @endauth
                     @csrf
@@ -65,11 +65,10 @@
         </div>
     </div>
     <!-- nav -->
-    <nav class="bg-white border-gray-200 sticky top-0 z-40">
+    <nav class="bg-white border-gray-200 sticky top-0 z-40" id="nav">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="{{route('home')}}" class="flex items-center space-x-3 rtl:space-x-reverse -mt-2">
-                <img src="http://127.0.0.1:8000/images/ticket.png" class="h-12 w-12" alt="Flowbite Logo" />
-                <span class="self-center text-3xl font-semibold whitespace-nowrap">TikBook</span>
+                <img src="http://127.0.0.1:8000/images/logo.jpg" class="h-11" alt="Logo" />
             </a>
             <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
