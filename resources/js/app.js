@@ -21,3 +21,16 @@ loginButton?.addEventListener('click', ()=>{
     login.classList.remove('hidden');
     login.classList.add('block');
 });
+
+// animation
+
+import {animate, inView, stagger} from 'motion';
+// nav
+animate('#nav' , {paddingTop: "10px", paddingBottom: "10px"}, {duration:0.5, easing: 'ease-in-out'});
+
+
+// card on main page
+let cardsSection = document.getElementById('#cards-section');
+inView('.mainCard', (info) => {
+    animate('.mainCard' , {y:20 ,scale:0.96 }, {delay:stagger(0.1)})
+}, {root:cardsSection})
