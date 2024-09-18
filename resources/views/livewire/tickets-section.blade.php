@@ -12,7 +12,7 @@
         @endforeach
     </div>
     {{-- filters --}}
-    <div class="flex flex-wrap items-center justify-between sticky top-[70px] bg-gray-100 z-30">
+    <div class="flex flex-wrap items-center justify-between sticky top-[90px] bg-gray-100 z-30">
     {{-- date time --}}
     <div class="mx-auto lg:mx-0">
         <livewire:datetime-filter >
